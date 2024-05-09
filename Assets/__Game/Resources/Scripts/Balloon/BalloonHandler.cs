@@ -7,8 +7,12 @@ namespace Assets.__Game.Resources.Scripts.Balloon
 {
   public class BalloonHandler : MonoBehaviour, IPointerClickHandler
   {
+    [SerializeField] private SpriteRenderer _cloudSpriteRenderer;
+    [Space]
+    [SerializeField] private Sprite[] _cloudSpritesToSpawn;
+
     private string _balloonValue;
-    private bool _correct; 
+    private bool _correct;
 
     public string BalloonValue
     {
@@ -20,6 +24,11 @@ namespace Assets.__Game.Resources.Scripts.Balloon
     {
       get => _correct;
       private set => _correct = value;
+    }
+
+    private void Awake()
+    {
+      SpawnRandomCLoudSprite();
     }
 
     public void SetBalloonDetails(string value, bool correct, bool tutorial = false)
@@ -55,6 +64,11 @@ namespace Assets.__Game.Resources.Scripts.Balloon
 
       DOTween.Kill(transform);
       Destroy(gameObject);
+    }
+
+    private void SpawnRandomCLoudSprite()
+    {
+      _cloudSpriteRenderer.sprite = _cloudSpritesToSpawn[Random.Range(0, _cloudSpritesToSpawn.Length)];
     }
   }
 }

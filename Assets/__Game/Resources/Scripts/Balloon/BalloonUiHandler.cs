@@ -1,7 +1,6 @@
 using __Game.Resources.Scripts.EventBus;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Assets.__Game.Resources.Scripts.Balloon
 {
@@ -9,7 +8,8 @@ namespace Assets.__Game.Resources.Scripts.Balloon
   {
     [SerializeField] private TextMeshProUGUI _numberText;
     [Header("Tutorial Param's")]
-    [SerializeField] private Image _glowingImage;
+    [SerializeField] private SpriteRenderer _mainSprite;
+    [SerializeField] private SpriteRenderer _tutiroalSprite;
     [SerializeField] private Color _correctGlowingColor;
     [SerializeField] private Color _incorrectGlowingColor;
 
@@ -39,11 +39,17 @@ namespace Assets.__Game.Resources.Scripts.Balloon
     {
       if (balloonUiEvent.BalloonId != transform.GetInstanceID()) return;
       if (balloonUiEvent.Tutorial == true)
-        _glowingImage.gameObject.SetActive(true);
+      {
+        _tutiroalSprite.sprite = _mainSprite.sprite;
+      }
       else
+      {
         return;
+      }
 
-      _glowingImage.color =balloonUiEvent.Correct == true ? _correctGlowingColor : _incorrectGlowingColor;
+      _tutiroalSprite.transform.localScale = new Vector3(
+        _tutiroalSprite.transform.localScale.x + 0.15f, _tutiroalSprite.transform.localScale.y + 0.15f);
+      _tutiroalSprite.color = balloonUiEvent.Correct == true ? _correctGlowingColor : _incorrectGlowingColor;
     }
   }
 }
