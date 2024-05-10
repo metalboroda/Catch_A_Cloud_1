@@ -72,11 +72,11 @@ namespace Assets.__Game.Resources.Scripts.Management
           break;
         case GameWinState:
           _audioSource.PlayOneShot(_winScreenClip);
-          StartCoroutine(DoPlayOneShot(_audioTool.GetRandomCLip(_winAnnouncerClips), 1.25f));
+          //StartCoroutine(DoPlayOneShot(_audioTool.GetRandomCLip(_winAnnouncerClips), 1.25f));
           break;
         case GameLoseState:
           _audioSource.PlayOneShot(_loseScreenClip);
-          StartCoroutine(DoPlayOneShot(_audioTool.GetRandomCLip(_loseAnnouncerClips), 1.25f));
+          //StartCoroutine(DoPlayOneShot(_audioTool.GetRandomCLip(_loseAnnouncerClips), 1.25f));
           break;
         case GamePauseState:
           _audioSource.PlayOneShot(_pauseScreenClip);
