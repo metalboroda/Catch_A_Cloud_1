@@ -13,6 +13,7 @@ namespace Assets.__Game.Resources.Scripts.Balloon
 
     private string _balloonValue;
     private bool _correct;
+    private AudioClip _wordClip;
 
     public string BalloonValue
     {
@@ -26,21 +27,27 @@ namespace Assets.__Game.Resources.Scripts.Balloon
       private set => _correct = value;
     }
 
+    private Collider _collider;
+
     private void Awake()
     {
+      _collider = GetComponent<Collider>();
+
       SpawnRandomCLoudSprite();
     }
 
-    public void SetBalloonDetails(string value, bool correct, bool tutorial = false)
+    public void SetBalloonDetails(string value, bool correct, AudioClip wordClip, bool tutorial = false)
     {
       _balloonValue = value;
       _correct = correct;
+      _wordClip = wordClip;
 
       EventBus<EventStructs.BalloonUiEvent>.Raise(new EventStructs.BalloonUiEvent
       {
         BalloonId = transform.GetInstanceID(),
         BalloonValue = _balloonValue,
         Correct = _correct,
+        WordClip = _wordClip,
         Tutorial = tutorial
       });
     }
@@ -62,8 +69,12 @@ namespace Assets.__Game.Resources.Scripts.Balloon
         Correct = correct
       });
 
-      DOTween.Kill(transform);
-      Destroy(gameObject);
+      _collider.enabled = false;
+
+      EventBus<EventStructs.BalloonAudioEvent>.Raise(new EventStructs.BalloonAudioEvent { WordClip = _wordClip });
+
+      //DOTween.Kill(transform);
+      //Destroy(gameObject);
     }
 
     private void SpawnRandomCLoudSprite()

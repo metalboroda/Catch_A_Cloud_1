@@ -75,7 +75,7 @@ namespace Assets.__Game.Resources.Scripts.Spawners
 
           bool correct = ArrayContains(_correctNumbersContainerSo.CorrectValues, balloonInfo.BalloonValue);
 
-          balloonHandler.SetBalloonDetails(balloonInfo.BalloonValue, correct, _tutorial);
+          balloonHandler.SetBalloonDetails(balloonInfo.BalloonValue, correct, balloonInfo.WordClip, _tutorial);
 
           if (correct == true)
             _correctNumbersBalloonHandlers.Add(balloonHandler);

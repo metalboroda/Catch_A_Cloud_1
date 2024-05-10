@@ -690,7 +690,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 812d87ab3b5740e4991d300b065526e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bubblesParticlesPrefab: {fileID: 0}
+  _bubblesParticlesPrefab: {fileID: 2179041034589586624, guid: 6e7ad2619bc8c344fba9a5ca55a5d91e, type: 3}
   _starPrefab: {fileID: 916465770222063766, guid: ba749d2534e94bf469a0da92e50d0829, type: 3}
   _angryFaceParticlesPrefab: {fileID: 916465770222063766, guid: aec3463f27499584e901fd7e7d716076, type: 3}
   _particlesSpawnPoint: {fileID: 5775191734984739331}

@@ -1,4 +1,5 @@
 using __Game.Resources.Scripts.EventBus;
+using DG.Tweening;
 using UnityEngine;
 
 namespace Assets.__Game.Resources.Scripts.Balloon
@@ -26,8 +27,14 @@ namespace Assets.__Game.Resources.Scripts.Balloon
     {
       if (balloonDestroyEvent.BalloonId != transform.GetInstanceID()) return;
 
-      SpawnParticle(balloonDestroyEvent.Correct ? _starPrefab : _angryFaceParticlesPrefab);
-      SpawnParticle(_bubblesParticlesPrefab);
+      transform.DOPunchScale(new Vector3(0.25f, 0.25f), 0.5f)
+        .SetEase(Ease.InOutQuad)
+        .OnComplete(() =>
+        {
+          SpawnParticle(balloonDestroyEvent.Correct ? _starPrefab : _angryFaceParticlesPrefab);
+          SpawnParticle(_bubblesParticlesPrefab);
+          Destroy(gameObject);
+        });
     }
 
     private void SpawnParticle(GameObject prefab)

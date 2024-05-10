@@ -12,5 +12,7 @@ namespace Assets.__Game.Resources.Scripts.Spawners
     [Space]
     public string BalloonValue;
     public int Amount;
+    [Space]
+    public AudioClip WordClip;
   }
 }

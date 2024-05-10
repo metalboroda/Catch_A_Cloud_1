@@ -1,6 +1,7 @@
 using __Game.Resources.Scripts.EventBus;
 using Assets.__Game.Resources.Scripts.Game.States;
 using Assets.__Game.Scripts.Tools;
+using System.Collections;
 using UnityEngine;
 
 namespace Assets.__Game.Resources.Scripts.Management
@@ -71,16 +72,23 @@ namespace Assets.__Game.Resources.Scripts.Management
           break;
         case GameWinState:
           _audioSource.PlayOneShot(_winScreenClip);
-          _audioSource.PlayOneShot(_audioTool.GetRandomCLip(_winAnnouncerClips));
+          StartCoroutine(DoPlayOneShot(_audioTool.GetRandomCLip(_winAnnouncerClips), 1.25f));
           break;
         case GameLoseState:
           _audioSource.PlayOneShot(_loseScreenClip);
-          _audioSource.PlayOneShot(_audioTool.GetRandomCLip(_loseAnnouncerClips));
+          StartCoroutine(DoPlayOneShot(_audioTool.GetRandomCLip(_loseAnnouncerClips), 1.25f));
           break;
         case GamePauseState:
           _audioSource.PlayOneShot(_pauseScreenClip);
           break;
       }
+    }
+
+    private IEnumerator DoPlayOneShot(AudioClip audioClip, float delay = 0)
+    {
+      yield return new WaitForSeconds(delay);
+
+      _audioSource.PlayOneShot(audioClip);
     }
 
     private void PlayButtonSound(EventStructs.UiButtonEvent buttonEvent)

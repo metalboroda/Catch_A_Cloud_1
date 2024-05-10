@@ -291,11 +291,11 @@ namespace Assets.__Game.Resources.Scripts.Management
           SwitchCanvas(_gameCanvas);
           break;
         case GameWinState:
-          SwitchCanvas(_winCanvas);
-          TryToEnableReward();
+          SwitchCanvas(_winCanvas, 1.25f);
+          TryToEnableReward(1.25f);
           break;
         case GameLoseState:
-          SwitchCanvas(_loseCanvas);
+          SwitchCanvas(_loseCanvas, 1.25f);
           break;
         case GamePauseState:
           SwitchCanvas(_pauseCanvas);
@@ -321,9 +321,16 @@ namespace Assets.__Game.Resources.Scripts.Management
       }
     }
 
-    private void TryToEnableReward()
+    private void TryToEnableReward(float delay = 0)
     {
-      if (_currentLoses > 0) return;
+      StartCoroutine(DoTryToEnableReward(delay));
+    }
+
+    private IEnumerator DoTryToEnableReward(float delay)
+    {
+      if (_currentLoses > 0) yield break;
+
+      yield return new WaitForSeconds(delay);
 
       //_winRewardButton.gameObject.SetActive(true);
       _winPerfectText.gameObject.SetActive(true);

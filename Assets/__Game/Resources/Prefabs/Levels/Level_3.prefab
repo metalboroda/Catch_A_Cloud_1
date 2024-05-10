@@ -41,15 +41,15 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 217846e4a1f878c439a55c7b1d7bf5f5, type: 2}
     - target: {fileID: 8974865717205484391, guid: a454cc821da5e1b419971d0230763865, type: 3}
       propertyPath: _balloonSpawnInfos.Array.size
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8974865717205484391, guid: a454cc821da5e1b419971d0230763865, type: 3}
       propertyPath: _balloonSpawnInfos.Array.data[0].Amount
-      value: 12
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8974865717205484391, guid: a454cc821da5e1b419971d0230763865, type: 3}
       propertyPath: _balloonSpawnInfos.Array.data[1].Amount
-      value: 12
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8974865717205484391, guid: a454cc821da5e1b419971d0230763865, type: 3}
       propertyPath: _balloonSpawnInfos.Array.data[2].Amount
@@ -60,29 +60,37 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8974865717205484391, guid: a454cc821da5e1b419971d0230763865, type: 3}
-      propertyPath: _balloonSpawnInfos.Array.data[4].Amount
-      value: 8
-      objectReference: {fileID: 0}
+      propertyPath: _balloonSpawnInfos.Array.data[2].WordClip
+      value: 
+      objectReference: {fileID: 8300000, guid: e8a4c70a4b5e60d448742fe2fd893863, type: 3}
     - target: {fileID: 8974865717205484391, guid: a454cc821da5e1b419971d0230763865, type: 3}
-      propertyPath: _balloonSpawnInfos.Array.data[5].Amount
-      value: 8
-      objectReference: {fileID: 0}
+      propertyPath: _balloonSpawnInfos.Array.data[3].WordClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 6e29a9923378da042a96ff34af92b1b7, type: 3}
     - target: {fileID: 8974865717205484391, guid: a454cc821da5e1b419971d0230763865, type: 3}
       propertyPath: _balloonSpawnInfos.Array.data[2].BalloonValue
-      value: "\u0410"
+      value: tall
       objectReference: {fileID: 0}
+    - target: {fileID: 8974865717205484391, guid: a454cc821da5e1b419971d0230763865, type: 3}
+      propertyPath: _balloonSpawnInfos.Array.data[2].WordAnouncer
+      value: 
+      objectReference: {fileID: 8300000, guid: e8a4c70a4b5e60d448742fe2fd893863, type: 3}
     - target: {fileID: 8974865717205484391, guid: a454cc821da5e1b419971d0230763865, type: 3}
       propertyPath: _balloonSpawnInfos.Array.data[3].BalloonValue
-      value: 3
+      value: a
       objectReference: {fileID: 0}
     - target: {fileID: 8974865717205484391, guid: a454cc821da5e1b419971d0230763865, type: 3}
-      propertyPath: _balloonSpawnInfos.Array.data[4].BalloonValue
-      value: 4
-      objectReference: {fileID: 0}
+      propertyPath: _balloonSpawnInfos.Array.data[3].WordAnouncer
+      value: 
+      objectReference: {fileID: 8300000, guid: 6e29a9923378da042a96ff34af92b1b7, type: 3}
     - target: {fileID: 8974865717205484391, guid: a454cc821da5e1b419971d0230763865, type: 3}
-      propertyPath: _balloonSpawnInfos.Array.data[5].BalloonValue
-      value: 5
-      objectReference: {fileID: 0}
+      propertyPath: _balloonSpawnInfos.Array.data[2].BalloonContainerSo
+      value: 
+      objectReference: {fileID: 11400000, guid: a96dc79e5850e2640a99a1455e501715, type: 2}
+    - target: {fileID: 8974865717205484391, guid: a454cc821da5e1b419971d0230763865, type: 3}
+      propertyPath: _balloonSpawnInfos.Array.data[3].BalloonContainerSo
+      value: 
+      objectReference: {fileID: 11400000, guid: a96dc79e5850e2640a99a1455e501715, type: 2}
     - target: {fileID: 8974865717979555190, guid: a454cc821da5e1b419971d0230763865, type: 3}
       propertyPath: m_Name
       value: Level_3

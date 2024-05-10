@@ -62,6 +62,8 @@ namespace Assets.__Game.Resources.Scripts.Management
 
     private void ReceiveBalloon(EventStructs.BalloonClickEvent balloonClickEvent)
     {
+      if (_gameBootstrapper.StateMachine.CurrentState is not GameplayState) return;
+
       foreach (string value in _correctNumbersContainerSo.CorrectValues)
       {
         if (_correctBalloonNumbers.Contains(balloonClickEvent.BalloonHandler))
