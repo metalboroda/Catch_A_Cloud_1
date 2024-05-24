@@ -18,18 +18,12 @@ namespace Assets.__Game.Resources.Scripts.Management
     [Space]
     [SerializeField] private AudioClip _buttonClip;
 
-    [Header("Announcer")]
-    [SerializeField] private AudioClip[] _winAnnouncerClips;
-    [SerializeField] private AudioClip[] _loseAnnouncerClips;
-    [SerializeField] private AudioClip[] _stuporAnnouncerClips;
-
     private AudioSource _audioSource;
 
     private AudioTool _audioTool;
 
     private EventBinding<EventStructs.StateChanged> _stateEvent;
     private EventBinding<EventStructs.UiButtonEvent> _buttonEvent;
-    private EventBinding<EventStructs.StuporEvent> _stuporEvent;
 
     private void Awake()
     {
@@ -53,14 +47,12 @@ namespace Assets.__Game.Resources.Scripts.Management
     {
       _stateEvent = new EventBinding<EventStructs.StateChanged>(PlayScreenSound);
       _buttonEvent = new EventBinding<EventStructs.UiButtonEvent>(PlayButtonSound);
-      _stuporEvent = new EventBinding<EventStructs.StuporEvent>(PlayStuporSound);
     }
 
     private void OnDisable()
     {
       _stateEvent.Remove(PlayScreenSound);
       _buttonEvent.Remove(PlayButtonSound);
-      _stuporEvent.Remove(PlayStuporSound);
     }
 
     private void PlayScreenSound(EventStructs.StateChanged state)
@@ -72,11 +64,9 @@ namespace Assets.__Game.Resources.Scripts.Management
           break;
         case GameWinState:
           _audioSource.PlayOneShot(_winScreenClip);
-          //StartCoroutine(DoPlayOneShot(_audioTool.GetRandomCLip(_winAnnouncerClips), 1.25f));
           break;
         case GameLoseState:
           _audioSource.PlayOneShot(_loseScreenClip);
-          //StartCoroutine(DoPlayOneShot(_audioTool.GetRandomCLip(_loseAnnouncerClips), 1.25f));
           break;
         case GamePauseState:
           _audioSource.PlayOneShot(_pauseScreenClip);
@@ -95,11 +85,6 @@ namespace Assets.__Game.Resources.Scripts.Management
     {
       _audioTool.RandomPitch();
       _audioSource.PlayOneShot(_buttonClip);
-    }
-
-    private void PlayStuporSound(EventStructs.StuporEvent stuporEvent)
-    {
-      _audioSource.PlayOneShot(_audioTool.GetRandomCLip(_stuporAnnouncerClips));
     }
   }
 }
