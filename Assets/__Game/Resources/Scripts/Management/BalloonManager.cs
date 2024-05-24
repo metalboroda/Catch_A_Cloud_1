@@ -104,7 +104,7 @@ namespace Assets.__Game.Resources.Scripts.Management
       if (_gameBootstrapper == null) return;
       if (_correctBalloonNumbers.Count == 0)
       {
-        _gameBootstrapper.StateMachine.ChangeState(new GameWinState(_gameBootstrapper));
+        StartCoroutine(DoToStateWithDelay(new GameWinState(_gameBootstrapper), 1f));
 
         EventBus<EventStructs.LevelPointEvent>.Raise(new EventStructs.LevelPointEvent
         {
@@ -113,9 +113,14 @@ namespace Assets.__Game.Resources.Scripts.Management
       }
 
       if (_incorrectBalloonNumbers.Count == 0)
-      {
-        _gameBootstrapper.StateMachine.ChangeState(new GameLoseState(_gameBootstrapper));
-      }
+        StartCoroutine(DoToStateWithDelay(new GameLoseState(_gameBootstrapper), 1f));
+    }
+
+    private IEnumerator DoToStateWithDelay(State newState, float delay = 0)
+    {
+      yield return new WaitForSeconds(delay);
+
+      _gameBootstrapper.StateMachine.ChangeState(newState);
     }
 
     private void ResetAndStartStuporTimer()
