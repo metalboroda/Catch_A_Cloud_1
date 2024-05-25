@@ -318,6 +318,9 @@ namespace Assets.__Game.Resources.Scripts.Management
         case GameLoseState:
           StartCoroutine(DoSwitchGlobalCanvas(true, 1.25f));
           SwitchCanvas(_loseCanvas, 1.25f);
+
+          if (_lastLevel == true)
+            _winNextLevelBtn.gameObject.SetActive(false);
           break;
         case GamePauseState:
           _globalCanvas.SetActive(true);
